@@ -1,23 +1,100 @@
 import React from 'react';
-
 import Foguete from './imgs/Logo/Logo.png'
 import './App.css';
 import {Card, Footer, Header, Main } from './Style';
+import { AreaCarrinho, Container, ContainerProd } from './style'
+import Filtros from './components/Filtros/Filtros';
+import Card from './components/Card/Card';
+import { listaDeProdutos } from './components/MockDeDados';
+import { useState } from 'react';
+
 
 function App() {
-  return (
-  <div>
-    <Header>
-      <img src={Foguete} className="App-logo" alt="logo" />
-      <h1>E-COMMERCE</h1>
-    </Header>
-    <Main>
-      <Card>asdasdas</Card>
-      <h1>asdasdasdassad</h1>
-    </Main>
-    <Footer><h3>Copyright © 2022 Labenu All rights reserved.</h3></Footer>
+  
+  const [valorMin, setValorMin] = useState(0)
+  const [valorMax, setValorMax] = useState(1000)
+  const [nome, setNome] = useState('')
+  const [prodCarrinho, setProdCarrinho] = useState([])
+  
 
-  </div>
+/* ---------------------------------LÓGICA PARA O GRID DOS PRODUTOS--------------------------------------- */
+
+//Renderiza lista de produtos com filtro para buscar
+  const gridDeProdutos = listaDeProdutos.filter((item) => {
+  return item.price >= valorMin || valorMin === "" 
+}).filter(item => {
+  return item.price <= valorMax || valorMax === ""
+}).filter(item => {
+  return item.name.toLowerCase().includes(nome.toLowerCase())
+}).map((item, index) => {
+  return ( <Card key={index}
+    foto={item.photo}
+    nome={item.name}
+    preco = {item.price}
+    funcaoAddProd = {() => {addProduto(index)}}
+    >
+    </Card>  
+      )
+})
+
+/* --------------------------------- LÓGICA PARA O CARRRINHO  --------------------------------------- */
+
+//renderiza todos os produtos do mock
+const todosProdutos = listaDeProdutos.map((item, index) => {
+  return (
+    <ul key={index}>
+      <li>{item.name}</li>
+      <li>{item.price}</li>
+      <button onClick={() => {removerProduto(index)}}>Remover</button>
+    </ul>
+  )
+})
+
+//adiciona produtos no carrinho
+let carrinhoAtualizado = [];
+function addProduto (itemAdd) {
+  todosProdutos.map((item, index) => {
+    if (index === itemAdd){
+    return carrinhoAtualizado.push(item)
+  }
+    return 0
+  })
+  setProdCarrinho([...prodCarrinho, carrinhoAtualizado])
+}
+
+//Lógica para remover do carrinho
+function removerProduto (indexRmv) {
+  prodCarrinho.filter((item, index) => {
+    return index !== indexRmv
+  })
+  setProdCarrinho([prodCarrinho])
+}
+
+  return (
+    <div>
+    <Header>
+    <img src={Foguete} className="App-logo" alt="logo" />
+    <h1>E-COMMERCE</h1>
+    </Header>
+
+    <Container>
+      <Filtros
+      valorMin = {valorMin}
+      valorMax = {valorMax}
+      nome = {nome}
+      setValorMin = {setValorMin}
+      setValorMax = {setValorMax}
+      setNome = {setNome}
+      />
+      <ContainerProd >
+      {gridDeProdutos}
+      </ContainerProd>
+      <AreaCarrinho>D
+      <h1>Carrinho:</h1>
+    {prodCarrinho}
+    </AreaCarrinho>
+    </Container>
+    </div>
   );
 }
 
