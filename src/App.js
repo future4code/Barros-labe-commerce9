@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import Foguete from './imgs/Logo/Logo.png'
 import './App.css';
+import {Card, Footer, Header, Main } from './Style';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <Header>
+      <img src={Foguete} className="App-logo" alt="logo" />
+      <h1>E-COMMERCE</h1>
+    </Header>
+    <Main>
+      <Card>asdasdas</Card>
+      <h1>asdasdasdassad</h1>
+    </Main>
+    <Footer><h3>Copyright © 2022 Labenu All rights reserved.</h3></Footer>
+
+  </div>
   );
 }
 
