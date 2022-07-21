@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AreaCarrinho, Container, ContainerProd } from './style'
 import Filtros from './components/Filtros/Filtros';
@@ -6,11 +7,14 @@ import { listaDeProdutos } from './components/MockDeDados';
 import { useState } from 'react';
 
 
+
+
+
 function App() {
   
   const [valorMin, setValorMin] = useState(0)
   const [valorMax, setValorMax] = useState(1000)
-  const [nome, setNome] = useState('')
+  const [nomeProd, setNome] = useState('')
   const [prodCarrinho, setProdCarrinho] = useState([])
   
 
@@ -22,13 +26,13 @@ function App() {
 }).filter(item => {
   return item.price <= valorMax || valorMax === ""
 }).filter(item => {
-  return item.name.toLowerCase().includes(nome.toLowerCase())
+  return item.nome.toLowerCase().includes(nomeProd.toLowerCase())
 }).map((item, index) => {
   return ( <Card key={index}
     foto={item.photo}
-    nome={item.name}
+    nome={item.nome}
     preco = {item.price}
-    funcaoAddProd = {() => {addProduto(index)}}
+    funcaoAddProd = {() => {adicionarProduto(item.nome)}}
     >
     </Card>  
       )
@@ -36,43 +40,41 @@ function App() {
 
 /* --------------------------------- LÓGICA PARA O CARRRINHO  --------------------------------------- */
 
-//renderiza todos os produtos do mock
-const todosProdutos = listaDeProdutos.map((item, index) => {
+//botão adicionar ao carrinho
+function adicionarProduto (itemAdd) {
+  const carrinhoAtualizado = listaDeProdutos.filter((item)=>{
+    console.log(itemAdd === item.nome)
+    return itemAdd === item.nome
+  })
+
+  setProdCarrinho([...prodCarrinho, ...carrinhoAtualizado])
+}
+
+//botão remover do carrinho
+function removerProduto (itemRemov) {
+  const carrinhoAtualizado = prodCarrinho.filter((item) => {
+    return itemRemov !== item.nome
+  })
+  setProdCarrinho(carrinhoAtualizado)
+}
+
+//renderiza o carrinho atualizado na lateral da tela
+let novoCarrinho = prodCarrinho.map((item, index)=>{
   return (
     <ul key={index}>
-      <li>{item.name}</li>
+      <li>{item.nome}</li>
       <li>{item.price}</li>
-      <button onClick={() => {removerProduto(index)}}>Remover</button>
+      <button onClick={() => removerProduto(item.nome)}>Remover</button>
     </ul>
   )
 })
-
-//adiciona produtos no carrinho
-let carrinhoAtualizado = [];
-function addProduto (itemAdd) {
-  todosProdutos.map((item, index) => {
-    if (index === itemAdd){
-    return carrinhoAtualizado.push(item)
-  }
-    return 0
-  })
-  setProdCarrinho([...prodCarrinho, carrinhoAtualizado])
-}
-
-//Lógica para remover do carrinho
-function removerProduto (indexRmv) {
-  prodCarrinho.filter((item, index) => {
-    return index !== indexRmv
-  })
-  setProdCarrinho([prodCarrinho])
-}
 
   return (
     <Container>
       <Filtros
       valorMin = {valorMin}
       valorMax = {valorMax}
-      nome = {nome}
+      nome = {nomeProd}
       setValorMin = {setValorMin}
       setValorMax = {setValorMax}
       setNome = {setNome}
@@ -82,7 +84,7 @@ function removerProduto (indexRmv) {
       </ContainerProd>
       <AreaCarrinho>
       <h1>Carrinho:</h1>
-    {prodCarrinho}
+      {novoCarrinho}
     </AreaCarrinho>
     </Container>
   );

@@ -1,44 +1,51 @@
+import atlantis from './imgs/OnibusSpacial/Atlantis-onibus.jpg'
+import challenger from './imgs/OnibusSpacial/Challenger-onibus.jpg'
+import columbia from './imgs/OnibusSpacial/columbia-onibus.jpg'
+import discovery from './imgs/OnibusSpacial/discovery-onibus.jpg'
+import endeavour from './imgs/OnibusSpacial/Endeavour-onibus.jpg'
+import enterprise from './imgs/OnibusSpacial/enterprise-onibus.jpg'
+
 export const listaDeProdutos = [
     {
         id: 0,
-        name: "Livro: Horizonte vertical: Onde o fim é apenas o recomeço",
+        nome: "Ônibus espacial Atlantis",
         price: 19.90,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/51znDC8+H1L._SY344_BO1,204,203,200_.jpg'
+        photo: atlantis
     },
 
     {
         id: 1,
-        name: "Livro: Como Ler Livros",
+        nome: "Ônibus espacial Challenger",
         price: 89.09,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/51Xkaa-973L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        photo: challenger
     },
 
     {
         id: 2,
-        name: "Livro: O Mito do Eterno Retorno",
+        nome: "Ônibus espacial Columbia",
         price: 54.71,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/41go3ZmbiAL._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        photo: columbia
     },
 
     {
         id: 3,
-        name: "Livro: Laranja Mecânica",
+        nome: "Ônibus espacial Discovery",
         price: 27.46,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/51cFreMs86L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        photo: discovery
     },
 
     {
         id: 4,
-        name: "Livro: A maquina de Uriel",
+        nome: "Ônibus espacial Endeavour",
         price: 119.99,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/51n2ln11j-L._SY344_BO1,204,203,200_QL70_ML2_.jpg'
+        photo: endeavour
     },
 
     {
         id: 5,
-        name: "Livro: Rumi - A dança da alma",
+        nome: "Ônibus espacial Enterprise",
         price: 56.62,
-        photo: 'https://images-na.ssl-images-amazon.com/images/I/41LHW1AJmWL._SX331_BO1,204,203,200_.jpg'
+        photo: enterprise
     },
 
 ]
