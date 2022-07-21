@@ -6,7 +6,8 @@ export const Container = styled.main`
 
 export const ContainerProd = styled.section`
     display: grid;
-    width: 60%;
+    width: 50%;
+    padding:20px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px 10px;   
 `
