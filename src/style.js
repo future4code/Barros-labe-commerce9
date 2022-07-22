@@ -50,15 +50,12 @@ height: 6vw;
 display:flex;
 justify-content:center;
 text-align:center;
-gap:30px;
-
-
 
 p{
     align-items:center;
     text-align:center;
     font-weight:bold;
-    font-size: clamp(8px, 2vw, 30px )
-    
+    font-size: clamp(8px, 2vw, 30px );
+
 }
 `
