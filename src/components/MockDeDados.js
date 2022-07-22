@@ -4,6 +4,14 @@ import columbia from './imgs/OnibusSpacial/columbia-onibus.jpg'
 import discovery from './imgs/OnibusSpacial/discovery-onibus.jpg'
 import endeavour from './imgs/OnibusSpacial/Endeavour-onibus.jpg'
 import enterprise from './imgs/OnibusSpacial/enterprise-onibus.jpg'
+import espaco from './imgs/BackGround/BGespaco.gif'
+
+export const BackGround = [
+    {
+        BackGround: espaco
+    },
+
+]
 
 export const listaDeProdutos = [
     {
@@ -49,3 +57,4 @@ export const listaDeProdutos = [
     },
 
 ]
+

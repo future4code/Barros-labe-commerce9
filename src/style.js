@@ -1,8 +1,14 @@
 import styled from "styled-components";
+import BackGround from './components/imgs/BackGround/BGespaco.gif'
+
+
+
 
 export const Container = styled.main`
     display: flex;
+    background-image: url(${BackGround});
 `
+
 
 export const ContainerProd = styled.section`
     display: grid;
@@ -50,7 +56,6 @@ height: 6vw;
 display:flex;
 justify-content:center;
 text-align:center;
-
 p{
     align-items:center;
     text-align:center;
