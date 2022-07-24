@@ -47,5 +47,20 @@ export const AreaCarrinho = styled.aside`
     width: 20%;
     display: flex;
     flex-direction: column;
-    
+`
+
+export const Header = styled.header`
+background-color: orange;
+width:100%;
+height: 6vw;
+display:flex;
+justify-content:center;
+text-align:center;
+p{
+    align-items:center;
+    text-align:center;
+    font-weight:bold;
+    font-size: clamp(8px, 2vw, 30px );
+
+}
 `

@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { AreaCarrinho, Container, ContainerProd } from './style'
+import { AreaCarrinho, Container, ContainerProd, Header } from './style'
 import Filtros from './components/Filtros/Filtros';
 import Card from './components/Card/Card';
 import { listaDeProdutos } from './components/MockDeDados';
 import { useState } from 'react';
+import logo from './components/imgs/Logo/Logo.png'
 
 
 
@@ -70,23 +71,30 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
 })
 
   return (
-    <Container>
-      <Filtros
-      valorMin = {valorMin}
-      valorMax = {valorMax}
-      nome = {nomeProd}
-      setValorMin = {setValorMin}
-      setValorMax = {setValorMax}
-      setNome = {setNome}
-      />
-      <ContainerProd >
-      {gridDeProdutos}
-      </ContainerProd>
-      <AreaCarrinho>
-      <h1>Carrinho:</h1>
-      {novoCarrinho}
-    </AreaCarrinho>
-    </Container>
+    <div>
+        <Header>
+          <img src={logo} alt='Imagem Logo'/>
+          <p>E-COMMERCE</p>
+        </Header>
+        <Container>
+          <Filtros
+          valorMin = {valorMin}
+          valorMax = {valorMax}
+          nome = {nomeProd}
+          setValorMin = {setValorMin}
+          setValorMax = {setValorMax}
+          setNome = {setNome}
+          />
+          <ContainerProd >
+          {gridDeProdutos}
+          </ContainerProd>
+          <AreaCarrinho>
+          <h1>Carrinho:</h1>
+          {novoCarrinho}
+          </AreaCarrinho>
+        </Container>
+    </div>
+  
   );
 }
 
