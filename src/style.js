@@ -50,7 +50,7 @@ export const AreaCarrinho = styled.aside`
 `
 
 export const Header = styled.header`
-background-color: orange;
+background-color: #000005;
 width:100%;
 height: 6vw;
 display:flex;
