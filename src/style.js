@@ -33,10 +33,22 @@ export const CardProd = styled.div`
         margin: 0;
         text-align: center;
         font-weight: 600;
+
+        input{
+            margin: 2px;
+            width: 190px;
+            margin-top: -1px
+            }
+            p{
+            margin: 2px;
+            }
+            h2{
+            margin:10px
+            }
     }
 `
 
-export const AreaFiltos = styled.section`
+export const AreaFiltros = styled.section`
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -63,4 +75,11 @@ p{
     font-size: clamp(8px, 2vw, 30px );
 
 }
+
+
+`
+
+export const footer = styled.footer`
+  <FaRocket/>
+
 `

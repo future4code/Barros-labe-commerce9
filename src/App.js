@@ -1,10 +1,12 @@
-import { AreaCarrinho, Container, ContainerProd, Header } from './style'
+import { AreaCarrinho, Container, ContainerProd, Header, Footer } from './style'
 import Filtros from './components/Filtros/Filtros';
 import Card from './components/Card/Card';
 import { listaDeProdutos } from './components/MockDeDados';
 import { useState } from 'react';
 import React, { useEffect } from 'react';
 import logo from './components/imgs/Logo/Logo.png'
+import { FaRocket } from 'react-icons/fa';
+
 
 
 function App() {
@@ -14,14 +16,18 @@ function App() {
   const [nomeProd, setNome] = useState('')
   
   //State para armazear os produtos adicionados no carrinho e lógica para salvar e recuperar o localStorage ao recarregar a página
-  const [prodCarrinho, setProdCarrinho] = useState([])
+  const [prodCarrinho, setProdCarrinho] = useState(()=>{
+    let storageCarrinho = localStorage.getItem("carrinho")
+    let storageMeuCarrinho = JSON.parse(storageCarrinho)
+    return storageMeuCarrinho || []
+  })
 
   //Slava o array de objetos no localStorage
-  /*/ useEffect(
+  useEffect(
     ()=>{
       localStorage.setItem("carrinho",JSON.stringify(prodCarrinho))
     },[prodCarrinho]
-  ) */
+  )
   
 /* ----------------LÓGICA PARA O GRID DOS PRODUTOS------------------ */
 
@@ -81,13 +87,13 @@ function removerProduto (itemRemov) {
 }
 
 // Lógica para somar os produtos no carrinho
- let arrPrecos = prodCarrinho.map((item)=> {
+let arrPrecos = prodCarrinho.map((item)=> {
   return item.price * item.qtde
 })
 
 let somaCarrinho = arrPrecos.reduce((preco1, preco2) => {
   return preco1 + preco2
-},0) 
+},0)
 
 
 //renderiza o carrinho atualizado na lateral da tela
@@ -102,7 +108,7 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
     </ul>
     </>
   )
-}) 
+})
 
   return (
     <div>
@@ -110,6 +116,9 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
           <img src={logo} alt='Imagem Logo'/>
           <p>E-COMMERCE</p>
         </Header>
+        <Footer>
+        <FaRocket className="App-logo" />
+        </Footer>
       <Container>
       <Filtros
       valorMin = {valorMin}
@@ -128,8 +137,9 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
       <p><strong>Total:</strong> {somaCarrinho.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
     </AreaCarrinho>
     </Container>
+
     </div>
-  ); 
-} 
+  );
+}
 
 export default App;
