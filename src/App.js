@@ -14,18 +14,14 @@ function App() {
   const [nomeProd, setNome] = useState('')
   
   //State para armazear os produtos adicionados no carrinho e lógica para salvar e recuperar o localStorage ao recarregar a página
-  const [prodCarrinho, setProdCarrinho] = useState(()=>{
-    let storageCarrinho = localStorage.getItem("carrinho")
-    let storageMeuCarrinho = JSON.parse(storageCarrinho)
-    return storageMeuCarrinho || ''
-  })
+  const [prodCarrinho, setProdCarrinho] = useState([])
 
   //Slava o array de objetos no localStorage
-  useEffect(
+  /*/ useEffect(
     ()=>{
       localStorage.setItem("carrinho",JSON.stringify(prodCarrinho))
     },[prodCarrinho]
-  )
+  ) */
   
 /* ----------------LÓGICA PARA O GRID DOS PRODUTOS------------------ */
 
@@ -85,13 +81,13 @@ function removerProduto (itemRemov) {
 }
 
 // Lógica para somar os produtos no carrinho
-let arrPrecos = prodCarrinho.map((item)=> {
+ let arrPrecos = prodCarrinho.map((item)=> {
   return item.price * item.qtde
 })
 
 let somaCarrinho = arrPrecos.reduce((preco1, preco2) => {
   return preco1 + preco2
-},0)
+},0) 
 
 
 //renderiza o carrinho atualizado na lateral da tela
@@ -106,7 +102,7 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
     </ul>
     </>
   )
-})
+}) 
 
   return (
     <div>
@@ -133,7 +129,7 @@ let novoCarrinho = prodCarrinho.map((item, index)=>{
     </AreaCarrinho>
     </Container>
     </div>
-  );
-}
+  ); 
+} 
 
 export default App;
