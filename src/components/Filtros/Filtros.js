@@ -1,10 +1,10 @@
 import React from "react";
-import { AreaFiltos } from "../../style";
+import { AreaFiltros } from "../../style";
 
 function Filtros (props) {
 
     return (
-        <AreaFiltos>
+        <AreaFiltros>
         <label>
             Valor mínimo:
             <input type='number' value={props.valorMin} onChange={(e) => props.setValorMin(e.target.value)}></input>
@@ -17,7 +17,7 @@ function Filtros (props) {
             Busca por Nome:
             <input type='text' value={props.nome} onChange={(e) => props.setNome(e.target.value)}></input>
         </label>
-        </AreaFiltos>
+        </AreaFiltros>
     )
 }
 

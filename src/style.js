@@ -36,7 +36,7 @@ export const CardProd = styled.div`
     }
 `
 
-export const AreaFiltos = styled.section`
+export const AreaFiltros = styled.section`
     width: 20%;
     display: flex;
     flex-direction: column;
