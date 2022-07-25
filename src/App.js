@@ -17,7 +17,7 @@ function App() {
   const [prodCarrinho, setProdCarrinho] = useState(()=>{
     let storageCarrinho = localStorage.getItem("carrinho")
     let storageMeuCarrinho = JSON.parse(storageCarrinho)
-    return storageMeuCarrinho || ''
+    return storageMeuCarrinho || []
   })
 
   //Slava o array de objetos no localStorage
